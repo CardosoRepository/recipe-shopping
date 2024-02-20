@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './recipe-detail.component.scss'
 })
 export class RecipeDetailComponent {
-
+	logg() {
+		console.log('test');
+	}
 }
