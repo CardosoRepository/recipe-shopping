@@ -39,13 +39,13 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col">
-					<div class="row">
+				<div class="col" formArrayName="ingredients">
+					<div class="row" *ngFor="let ingredientControl of ingredientControls; let i = index" [formGroupName]="i">
 						<div class="col-sm-8 mb-2">
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" formControlName="name">
 						</div>
 						<div class="col-sm-2 mb-2">
-							<input type="number" class="form-control">
+							<input type="number" class="form-control" formControlName="amount">
 						</div>
 						<div class="col-sm-2">
 							<button type="button" class="btn btn-danger w-100">X</button>
