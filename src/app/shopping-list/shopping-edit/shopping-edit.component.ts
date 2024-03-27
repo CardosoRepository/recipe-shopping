@@ -25,8 +25,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 				(index: number) => {
 					this.editMode = true;
 					this.editedItemIndex = index;
-					this.editedItem =
-						this._shoppingListService.getIngredient(index);
+					this.editedItem = this._shoppingListService.getIngredient(index);
 
 					this.shoppingListForm.setValue({
 						name: this.editedItem.name,
@@ -59,5 +58,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 	onClear() {
 		this.shoppingListForm.reset();
 		this.editMode = false;
+	}
+
+	onDelete(editedItemIndex: number) {
+		this._shoppingListService.deleteIngredient(editedItemIndex);
+		this.onClear();
 	}
 }
