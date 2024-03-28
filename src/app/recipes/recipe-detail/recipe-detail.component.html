@@ -25,12 +25,15 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-12">
-		{{ recipe.description }}
+	<div class="col-sm-12 my-4">
+		<span class="font-weight-bold">{{ recipe.description }}</span>
 	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
+		<div class="mb-2">
+			<span>Ingredients:</span>
+		</div>
 		<ul class="list-group">
 			<li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
 			{{ ingredient.name }} - {{ ingredient.amount }}
