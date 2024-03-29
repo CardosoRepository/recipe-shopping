@@ -8,13 +8,15 @@ import { Subject } from 'rxjs';
 export class RecipeService {
 	recipesChanged = new Subject<Recipe[]>();
 
-	private recipes: Recipe[];
+	private recipes: Recipe[] = [];
 
-	constructor(private _shoppingListService: ShoppingListService) {}
+	constructor(private _shoppingListService: ShoppingListService) {
+		this.recipes = [];
+	}
 
 	setRecipes(recipes: Recipe[]) {
 		this.recipes = recipes;
-		this.recipesChanged.next(this.recipes.slice());
+		this.recipesChanged.next(this.recipes?.slice());
 	}
 
 	getRecipe(index: number) {
