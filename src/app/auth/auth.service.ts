@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { Subject, catchError, tap, throwError } from 'rxjs';
+import { User } from './user.model';
 
 export interface AuthResponseData {
 	idToken: string;
@@ -14,6 +15,8 @@ export interface AuthResponseData {
 
 @Injectable()
 export class AuthService {
+	user = new Subject<User>();
+
 	constructor(private _http: HttpClient) {}
 
 	signUp(email: string, password: string) {
@@ -26,7 +29,17 @@ export class AuthService {
 					returnSecureToken: true,
 				}
 			)
-			.pipe(catchError(this.handleError));
+			.pipe(
+				catchError(this.handleError),
+				tap((responseData) => {
+					this.handleAuthentication(
+						responseData.email,
+						responseData.localId,
+						responseData.idToken,
+						+responseData.expiresIn
+					);
+				})
+			);
 	}
 
 	login(email: string, password: string) {
@@ -39,7 +52,31 @@ export class AuthService {
 					returnSecureToken: true,
 				}
 			)
-			.pipe(catchError(this.handleError));
+			.pipe(
+				catchError(this.handleError),
+				tap((responseData) => {
+					this.handleAuthentication(
+						responseData.email,
+						responseData.localId,
+						responseData.idToken,
+						+responseData.expiresIn
+					);
+				})
+			);
+	}
+
+	private handleAuthentication(
+		email: string,
+		userId: string,
+		token: string,
+		expiresIn: number
+	) {
+		const expirationDate = new Date(
+			new Date().getTime() + expiresIn + 1000
+		);
+		const user = new User(email, userId, token, expirationDate);
+
+		this.user.next(user);
 	}
 
 	private handleError(errorRes: HttpErrorResponse) {
@@ -55,6 +92,12 @@ export class AuthService {
 				break;
 			case 'INVALID_LOGIN_CREDENTIALS':
 				errorMsg = 'User or password incorrect.';
+				break;
+			case 'EMAIL_NOT_FOUND':
+				errorMsg = 'This email does not exist.';
+				break;
+			case 'INVALID_PASSWORD':
+				errorMsg = 'This password is not correct.';
 				break;
 		}
 
