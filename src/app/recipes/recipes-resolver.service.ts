@@ -9,7 +9,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { Observable } from 'rxjs';
 import { RecipeService } from './recipe.service';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class RecipesResolverService implements Resolve<Recipe[]> {
 	constructor(
 		private _dataStorageService: DataStorageService,
