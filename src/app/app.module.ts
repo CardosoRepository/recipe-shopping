@@ -10,24 +10,16 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth/auth.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core.module';
 
 @NgModule({
 	declarations: [AppComponent, HeaderComponent],
 	imports: [
+		CoreModule,
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		SharedModule,
-	],
-	providers: [
-		ShoppingListService,
-		RecipeService,
-		AuthService,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: AuthInterceptorService,
-			multi: true,
-		},
 	],
 	bootstrap: [AppComponent],
 })
