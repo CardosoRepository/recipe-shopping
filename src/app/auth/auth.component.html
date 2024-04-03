@@ -3,7 +3,7 @@
 		<!-- <div class="alert alert-danger" *ngIf="error">
 			<p class="m-0">{{ error }}</p>
 		</div> -->
-		<app-alert [message]="error || 'teste'" *ngIf="error || 'teste'" />
+		<app-alert [message]="error" *ngIf="error" (close)="onHandleError()" />
 		<div class="text-center" *ngIf="isLoading">
 			<app-loading-spinner></app-loading-spinner>
 		</div>
