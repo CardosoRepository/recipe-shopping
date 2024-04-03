@@ -9,7 +9,7 @@ import { RecipesStartComponent } from './recipes-start/recipes-start.component';
 
 const routes: Routes = [
 	{
-		path: 'recipes',
+		path: '',
 		component: RecipesComponent,
 		canActivate: [AuthGuardFn],
 		children: [
@@ -24,12 +24,12 @@ const routes: Routes = [
 				component: RecipeDetailComponent,
 				resolve: [RecipesResolverService],
 			},
-			{ path: '', component: RecipesStartComponent },
+            { path: '', component: RecipesStartComponent },
 		],
 	},
 ];
 @NgModule({
 	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
 })
 export class RecipesRoutingModule {}
