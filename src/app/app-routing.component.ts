@@ -7,9 +7,10 @@ import { RecipeDetailComponent } from "./recipes/recipe-detail/recipe-detail.com
 import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { RecipesResolverService } from "./recipes/recipes-resolver.service";
 import { AuthComponent } from "./auth/auth.component";
+import { AuthGuardFn } from "./auth/auth.guard";
 
 export const appRoutes: Routes = [
-	{ path: 'recipes', component: RecipesComponent, children: [
+	{ path: 'recipes', component: RecipesComponent, canActivate: [AuthGuardFn], children: [
 		{path: ':id/edit', component: RecipeEditComponent, resolve: [RecipesResolverService]},
 		{path: 'new', component: RecipeEditComponent},
 		{path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolverService]},
