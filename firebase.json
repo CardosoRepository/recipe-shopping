@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/browser",
+    "public": "dist/recipe-shopping",
     "ignore": [
       "firebase.json",
       "**/.*",
