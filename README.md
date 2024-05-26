@@ -19,7 +19,7 @@ O Recipe Book é um app que guarda receitas de comida. Nele é possível fazer o
 
 ## 🔖 Acesso
 
-Recipe Book
+[Recipe Book](https://ng-complete-guide-437a4.web.app/auth)
 
 ## 🚀 Como executar
 
