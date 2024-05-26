@@ -1,27 +1,32 @@
-# RecipeShopping
+<h1 align="center">
+  Recipe Book
+</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+<p align="center">
+  <img alt="Happy" src="src/about.png" width="90%">
+</p>
 
-## Development server
+## ✨ Tecnologias
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-## Code scaffolding
+- [Angular](https://angular.dev)
+- [TypeScript](https://www.typescriptlang.org/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 💻 Projeto
 
-## Build
+O Recipe Book é um app que guarda receitas de comida. Nele é possível fazer o login de usuário e guardar/enviar as receitas para serem salvas no servidor externo.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🔖 Acesso
 
-## Running unit tests
+Recipe Book
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🚀 Como executar
 
-## Running end-to-end tests
+- Clone o repositório
+- Instale as dependências com `npm install`
+- Inicie o servidor com `npm start`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Agora você pode acessar [`localhost:4200`](http://localhost:4200) do seu navegador.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
